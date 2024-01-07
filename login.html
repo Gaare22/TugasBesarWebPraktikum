@@ -56,7 +56,7 @@
                 </div>
 
                 <div class="text-center">
-                    <button type="button" class="btn btn-primary" onclick="validateLogin()">Login</button>
+                    <button type="submit" class="btn btn-primary">Login</button>
                 </div>
             </form>
             <div id="error" class="error"></div>
@@ -66,24 +66,41 @@
         <p>&copy; 2022 E-Commerce Platform. All rights reserved.</p>
     </footer>
     <script>
-        function validateLogin() {
-            var username = document.getElementById('username').value;
-            var password = document.getElementById('password').value;
-            var errorDiv = document.getElementById('error');
+        $(document).ready(function () {
+            $('#loginForm').submit(function (e) {
+                e.preventDefault();
 
-            var correctUsername = 'user';
-            var correctPassword = 'password';
+                var username = $('#username').val();
+                var password = $('#password').val();
+                var errorDiv = $('#error');
 
-            if (username === correctUsername && password === correctPassword) {
-                console.log('Login successful!');
-                errorDiv.innerHTML = '';
-                sessionStorage.setItem('username', username);
-                sessionStorage.setItem('isLoggedIn', 'true');
-                window.location.href = '/';
-            } else {
-                errorDiv.innerHTML = 'Incorrect username or password';
-            }
-        }
+                var correctUsername = 'user';
+                var correctPassword = 'password';
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'your_login_endpoint.php',
+                    data: {
+                        username: username,
+                        password: password
+                    },
+                    success: function (response) {
+                        if (response === 'success') {
+                            console.log('Login successful!');
+                            errorDiv.html('');
+                            sessionStorage.setItem('username', username);
+                            sessionStorage.setItem('isLoggedIn', 'true');
+                            window.location.href = '/';
+                        } else {
+                            errorDiv.html('Incorrect username or password');
+                        }
+                    },
+                    error: function () {
+                        errorDiv.html('Error during login. Please try again.');
+                    }
+                });
+            });
+        });
     </script>
 </body>
 </html>

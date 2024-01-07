@@ -65,7 +65,7 @@
                 </div>
 
                 <div class="text-center">
-                    <button type="button" class="btn btn-primary" onclick="validateRegistration()">Register</button>
+                    <button type="button" class="btn btn-primary" onclick="submitRegistration()">Register</button>
                 </div>
             </form>
             <div id="registrationMessage" class="error"></div>
@@ -75,19 +75,30 @@
         <p>&copy; 2022 E-Commerce Platform. All rights reserved.</p>
     </footer>
     <script>
-        function validateRegistration() {
-            var fullname = document.getElementById('fullname').value;
-            var email = document.getElementById('email').value;
-            var username = document.getElementById('username').value;
-            var password = document.getElementById('password').value;
-            var registrationMessage = document.getElementById('registrationMessage');
+        function submitRegistration() {
+            var fullname = $('#fullname').val();
+            var email = $('#email').val();
+            var username = $('#username').val();
+            var password = $('#password').val();
+            var registrationMessage = $('#registrationMessage');
 
-            // You can add more comprehensive validation here
+            $.ajax({
+                url: 'your_registration_endpoint.php',
+                method: 'POST',
+                data: {
+                    fullname: fullname,
+                    email: email,
+                    username: username,
+                    password: password
+                },
+                success: function (response) {
 
-            // For demonstration, just show a success message
-            registrationMessage.innerHTML = 'Registration successful!';
-
-            // You may want to redirect the user to a login page or take other actions after registration
+                    registrationMessage.html(response);
+                },
+                error: function () {
+                    registrationMessage.html('Error registration. Please try again.');
+                }
+            });
         }
     </script>
 </body>
