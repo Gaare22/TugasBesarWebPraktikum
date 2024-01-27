@@ -1,0 +1,107 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+}
+
+header {
+    background-color: #343a40;
+    padding: 15px 0;
+}
+
+nav {
+    border-bottom: 1px solid #fff;
+}
+
+nav a {
+    color: #fff;
+}
+
+nav a:hover {
+    color: #f8f9fa;
+}
+
+main {
+    padding: 20px 0;
+}
+
+footer {
+    background-color: #343a40;
+    padding: 20px 0;
+    text-align: center;
+    color: #fff;
+}
+
+/* Additional styles for the footer */
+footer p {
+    margin-bottom: 0;
+}
+
+.login-container {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    overflow: hidden;
+    margin-top: 50px; /* Added some margin at the top for spacing */
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+
+input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+.error {
+    color: #e2401c;
+    margin-top: 10px;
+}
+
+button {
+    width: 100%;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    box-sizing: border-box;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Media Query for Desktop Screens */
+@media (min-width: 768px) {
+    .login-container {
+        max-width: 600px;
+    }
+
+    input {
+        width: 100%;
+        margin-right: 0;
+    }
+}
